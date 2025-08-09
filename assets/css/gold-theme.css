@@ -1,0 +1,118 @@
+:root {
+    /* Gold color palette */
+    --gold-primary: #D4AF37;
+    --gold-secondary: #F9E076;
+    --gold-dark: #B8860B;
+    --gold-light: #FFF9E6;
+    --gold-accent: #C5A42A;
+    
+    /* Complementary colors */
+    --dark-blue: #0A2463;
+    --rich-brown: #5D4037;
+    --cream: #F5F5DC;
+    
+    /* Neutrals */
+    --white: #FFFFFF;
+    --black: #000000;
+    --gray: #808080;
+    --light-gray: #F5F5F5;
+    --dark-gray: #333333;
+}
+
+/* Gold-themed elements */
+.gold-bg {
+    background-color: var(--gold-primary);
+    color: var(--white);
+}
+
+.gold-text {
+    color: var(--gold-primary);
+}
+
+.btn-gold {
+    background-color: var(--gold-primary);
+    color: var(--rich-brown);
+    border: none;
+}
+
+.btn-gold:hover {
+    background-color: var(--gold-dark);
+    color: var(--white);
+}
+
+.border-gold {
+    border-color: var(--gold-primary);
+}
+
+.gold-card {
+    background: linear-gradient(135deg, var(--gold-light), var(--white));
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    padding-bottom: 50px;
+}
+
+.gold-card .card-header {
+    background-color: var(--gold-primary);
+    color: var(--white);
+    border-bottom: none;
+    border-radius: 8px 8px 0 0 !important;
+}
+
+/* Status indicators */
+.status-indicator {
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-weight: 600;
+}
+
+.status-gold {
+    background-color: rgba(212, 175, 55, 0.2);
+    color: var(--gold-dark);
+}
+
+.status-no-gold {
+    background-color: rgba(109, 109, 109, 0.2);
+    color: var(--dark-gray);
+}
+
+.status-active {
+    background-color: rgba(40, 167, 69, 0.2);
+    color: #28a745;
+}
+
+.status-inactive {
+    background-color: rgba(220, 53, 69, 0.2);
+    color: #dc3545;
+}
+
+/* Table styling */
+.table-gold thead {
+    background-color: var(--gold-primary);
+    color: var(--white);
+}
+
+.table-gold tbody tr:hover {
+    background-color: rgba(212, 175, 55, 0.1);
+}
+
+/* Form elements */
+.form-control:focus, .form-select:focus {
+    border-color: var(--gold-primary);
+    box-shadow: 0 0 0 0.25rem rgba(212, 175, 55, 0.25);
+}
+
+/* Badges */
+.badge-gold {
+    background-color: var(--gold-primary);
+    color: var(--rich-brown);
+}
+
+.pagination{
+    margin-top: -100px;
+}
+/* Add to your styles.css */
+#accountsChart {
+    width: 100% !important;
+    height: 300px !important;
+}

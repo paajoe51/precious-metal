@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gold Calculator - MicroGold Trust</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/gold-theme.css">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar Navigation (same as index.html) -->
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo-container">
+                    <i class="fas fa-gem logo-icon"></i>
+                    <h1>MicroGold Trust</h1>
+                </div>
+                <button class="sidebar-toggle d-lg-none">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <ul class="nav-list">
+                <li class="nav-item active">
+                    <a href="index.html" class="nav-link">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="gold-calculator.html" class="nav-link">
+                        <i class="fas fa-calculator"></i>
+                        <span>Gold Calculator</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="transactions.html" class="nav-link">
+                        <i class="fas fa-exchange-alt"></i>
+                        <span>Transactions</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="income-statement.html" class="nav-link">
+                        <i class="fas fa-file-invoice-dollar"></i>
+                        <span>Income Statement</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="accounts.html" class="nav-link">
+                        <i class="fas fa-landmark"></i>
+                        <span>Brokerage Accounts</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="customers.html" class="nav-link">
+                        <i class="fas fa-users"></i>
+                        <span>Customer Database</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="about.html" class="nav-link">
+                        <i class="fas fa-info-circle"></i>
+                        <span>About Us</span>
+                    </a>
+                </li>
+            </ul>
+            
+            <div class="sidebar-footer">
+                <div class="user-profile">
+                    <div class="user-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="user-info">
+                        <span class="user-name">Admin User</span>
+                        <span class="user-role">Administrator</span>
+                    </div>
+                </div>
+                <a href="#" class="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </a>
+            </div>
+        </nav>
+
+        <main class="main-content">
+            <div class="top-bar">
+                <button class="sidebar-toggle d-lg-none">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <h2 class="page-title">Gold Calculator</h2>
+                <div class="top-bar-actions">
+                    <button class="btn btn-gold" id="print-calculator">
+                        <i class="fas fa-print"></i> Print
+                    </button>
+                    <div class="date-display">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span id="current-date"></span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="content-container">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="card gold-card">
+                            <div class="card-header">
+                                <h3>Input Parameters</h3>
+                            </div>
+                            <div class="card-body">
+                                <form id="gold-calculator-form">
+                                    <div class="mb-3">
+                                        <label for="top" class="form-label">TOP:</label>
+                                        <input type="number" class="form-control" id="top" placeholder="143.81" step="0.01" required>
+                                        <div class="form-text">Weight measurement</div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="down" class="form-label">DOWN:</label>
+                                        <input type="number" class="form-control" id="down" placeholder="7.77" step="0.01" required>
+                                        <div class="form-text">Density measurement</div>
+                                    </div>
+                                    <div class="mb-4">
+                                        <label for="base" class="form-label">BASE:</label>
+                                        <input type="number" class="form-control" id="base" placeholder="4720" required>
+                                        <div class="form-text">Current market base price</div>
+                                    </div>
+                                    
+                                    <div class="d-grid gap-2 d-md-flex">
+                                        <button type="button" class="btn btn-gold me-md-2" id="calculate-btn">
+                                            <i class="fas fa-calculator me-1"></i> Calculate
+                                        </button>
+                                        <button type="reset" class="btn btn-outline-secondary">
+                                            <i class="fas fa-undo me-1"></i> Reset
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-6">
+                        <div class="card gold-card">
+                            <div class="card-header">
+                                <h3>Calculation Results</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="row mb-3">
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label">POUNDS</label>
+                                        <div class="result-value" id="pounds-result">0.00</div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label">KARAT</label>
+                                        <div class="result-value" id="karat-result">0.00</div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label">Moro</label>
+                                        <div class="result-value" id="moro-result">0.00</div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label">VALUE</label>
+                                        <div class="result-value" id="value-result">0.00</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="status-indicator p-3" id="status-indicator">
+                                    <div class="d-flex align-items-center">
+                                        <i class="fas fa-times-circle fa-2x me-3"></i>
+                                        <div>
+                                            <label class="form-label mb-0">Status</label>
+                                            <div class="status-value" id="status-result">No Gold</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="d-grid gap-2 d-md-flex mt-4">
+                                    <button class="btn btn-gold me-md-2" id="save-btn">
+                                        <i class="fas fa-save me-1"></i> Save to Transactions
+                                    </button>
+                                    <button class="btn btn-outline-gold" id="export-calc">
+                                        <i class="fas fa-file-export me-1"></i> Export
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card gold-card mt-4">
+                    <div class="card-header">
+                        <h3>Calculation Formulas</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h5>How to use this calculator</h5>
+                                <ol>
+                                    <li>Enter the TOP measurement (weight)</li>
+                                    <li>Enter the DOWN measurement (density)</li>
+                                    <li>Enter the current BASE price</li>
+                                    <li>Click "Calculate" to see results</li>
+                                    <li>Save to Transactions for record keeping</li>
+                                </ol>
+                            </div>
+                            <div class="col-md-6">
+                                <h5>Formulas Used</h5>
+                                <div class="formula-box p-3">
+                                    <p><strong>POUNDS</strong> = ROUNDDOWN(TOP/7.75, 2)</p>
+                                    <p><strong>KARAT</strong> = ROUNDDOWN(TOP/DOWN, 2)</p>
+                                    <p><strong>Moro</strong> = ROUNDDOWN((KARAT-10.51)*(52.838)/KARAT, 2)</p>
+                                    <p><strong>VALUE</strong> = ROUNDDOWN((BASE*POUNDS*KARAT)/23, 0)</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/calculator.js"></script>
+    <script src="../assets/js/main.js"></script>
+</body>
+</html>
