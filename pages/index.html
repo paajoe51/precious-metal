@@ -104,9 +104,51 @@
             </div>
             
             <div class="content-container">
+                <div class="row mb-4 dash-card">
+                    <div class="col-md-3 mb-3">
+                        <div class="card gold-card dashboard-card">
+                            <div class="card-body text-center">
+                                <i class="fas fa-coins gold-icon"></i>
+                                <h5 class="card-title">Total Gold Value</h5>
+                                <div class="stat-number">GHS 1,245,678</div>
+                                <p class="text-success small mb-0"><i class="fas fa-arrow-up me-1"></i> 2.4% from last week</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <div class="card gold-card dashboard-card">
+                            <div class="card-body text-center">
+                                <i class="fas fa-chart-line gold-icon"></i>
+                                <h5 class="card-title">Current Profit</h5>
+                                <div class="stat-number">GHS 245,678</div>
+                                <p class="text-success small mb-0"><i class="fas fa-arrow-up me-1"></i> 5.1% from last month</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <div class="card gold-card dashboard-card">
+                            <div class="card-body text-center">
+                                <i class="fas fa-users gold-icon"></i>
+                                <h5 class="card-title">Active Customers</h5>
+                                <div class="stat-number">38</div>
+                                <p class="text-muted small mb-0"><i class="fas fa-equals me-1"></i> No change today</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <div class="card gold-card dashboard-card">
+                            <div class="card-body text-center">
+                                <i class="fas fa-exchange-alt gold-icon"></i>
+                                <h5 class="card-title">Today's Transactions</h5>
+                                <div class="stat-number">12</div>
+                                <p class="text-danger small mb-0"><i class="fas fa-arrow-down me-1"></i> 1 from yesterday</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <!-- Dashboard content here -->
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-7">
                         <div class="card gold-card">
                             <div class="card-header">
                                 <h3>Gold Value Trends</h3>
@@ -116,14 +158,44 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-5">
                         <div class="card gold-card">
                             <div class="card-header">
-                                <h3>Recent Transactions</h3>
+                                <h3><i class="fas fa-list me-2"></i> Recent Transactions</h3>
                             </div>
                             <div class="card-body">
                                 <div class="transaction-list">
-                                    <!-- Transactions will be loaded here -->
+                                    <div class="transaction-item">
+                                        <div class="d-flex justify-content-between">
+                                            <div>
+                                                <h6 class="mb-0">Gold Purchase</h6>
+                                                <small class="text-muted">Today, 10:45 AM</small>
+                                            </div>
+                                            <div class="positive">+GHS 45,200</div>
+                                        </div>
+                                    </div>
+                                    <div class="transaction-item">
+                                        <div class="d-flex justify-content-between">
+                                            <div>
+                                                <h6 class="mb-0">Gold Sale</h6>
+                                                <small class="text-muted">Today, 09:30 AM</small>
+                                            </div>
+                                            <div class="negative">-GHS 32,150</div>
+                                        </div>
+                                    </div>
+                                   
+                                    <div class="transaction-item">
+                                        <div class="d-flex justify-content-between">
+                                            <div>
+                                                <h6 class="mb-0">Gold Purchase</h6>
+                                                <small class="text-muted">Yesterday, 3:15 PM</small>
+                                            </div>
+                                            <div class="positive">+GHS 28,750</div>
+                                        </div>
+                                    </div>
+                                    <div class="page-container">
+                                        <a href="#" class="btn btn-outline-gold mt-2 w-100" data-page="transactions">View All Transactions</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
