@@ -39,7 +39,7 @@ $(document).ready(function() {
             moro = Math.floor((karat - 10.51) * 52.838 / karat * 100) / 100;
         }
         
-        const value = Math.floor((base * pounds * karat) / 23);
+        const value = Math.floor((base * pounds * moro) / 23);
         
         // Update results
         $('#pounds-result').text(pounds.toFixed(2));
