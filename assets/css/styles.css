@@ -218,6 +218,10 @@ body {
     height: 300px !important;
 }
 
+canvas{
+    width:100%;
+}
+
 .card-body {
     position: relative;
     min-height: 300px;
