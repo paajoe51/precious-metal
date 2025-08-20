@@ -46,9 +46,9 @@ $(document).ready(function() {
         $('#pounds-result').text(pounds.toFixed(2));
         $('#karat-result').text(karat.toFixed(2));
         $('#moro-result').text(moro.toFixed(2));
-        $('#value-result').text(value.toLocaleString());
+        $('#value-result').text(value.toLocaleString()+".00"); // This already adds commas
         
-        // Convert value to words and update
+        // Convert value to words with commas and update
         const amountInWords = convertToGhanaCedisWords(value);
         $('#value-words').text(amountInWords);
         
@@ -64,7 +64,7 @@ $(document).ready(function() {
         }
     }
     
-    // Function to convert number to Ghana Cedis words
+    // Function to convert number to Ghana Cedis words with proper comma placement
     function convertToGhanaCedisWords(amount) {
         if (amount === 0) return 'Zero Ghana Cedis';
         
@@ -73,7 +73,7 @@ $(document).ready(function() {
         const tens = ['', 'Ten', 'Twenty', 'Thirty', 'Forty', 'Fifty', 'Sixty', 'Seventy', 'Eighty', 'Ninety'];
         const thousands = ['', 'Thousand', 'Million', 'Billion'];
         
-        function convertThreeDigits(num) {
+        function convertThreeDigits(num, isLastChunk = false) {
             let result = '';
             const hundred = Math.floor(num / 100);
             const remainder = num % 100;
@@ -108,21 +108,67 @@ $(document).ready(function() {
         
         let words = '';
         let index = 0;
+        const chunks = [];
         
+        // Break the number into chunks of three digits
         do {
             const chunk = amount % 1000;
-            if (chunk !== 0) {
-                let chunkWords = convertThreeDigits(chunk);
-                if (thousands[index]) {
-                    chunkWords += ' ' + thousands[index];
-                }
-                words = chunkWords + (words ? ' ' + words : '');
-            }
+            chunks.push({value: chunk, scale: thousands[index]});
             amount = Math.floor(amount / 1000);
             index++;
         } while (amount > 0);
         
+        // Process each chunk and add commas where appropriate
+        for (let i = chunks.length - 1; i >= 0; i--) {
+            const chunk = chunks[i];
+            if (chunk.value === 0) continue;
+            
+            const chunkWords = convertThreeDigits(chunk.value, i === 0);
+            
+            if (chunkWords) {
+                let chunkResult = chunkWords;
+                
+                // Add scale (Thousand, Million, Billion) if applicable
+                if (chunk.scale) {
+                    chunkResult += ' ' + chunk.scale;
+                }
+                
+                // Add comma if this is not the last chunk and there are more words to come
+                if (words && i > 0) {
+                    // Check if the next chunk has value
+                    let hasNextChunk = false;
+                    for (let j = i - 1; j >= 0; j--) {
+                        if (chunks[j].value > 0) {
+                            hasNextChunk = true;
+                            break;
+                        }
+                    }
+                    
+                    if (hasNextChunk) {
+                        // Add comma based on the position
+                        if (i === 1) {
+                            // If we're at thousands level and there are units/hundreds coming
+                            words += ', ';
+                        } else if (i === 2) {
+                            // If we're at millions level and there are thousands/units coming
+                            words += ', ';
+                        } else if (i === 3) {
+                            // If we're at billions level and there are millions/thousands coming
+                            words += ', ';
+                        }
+                    }
+                }
+                
+                words = words ? words + ' ' + chunkResult : chunkResult;
+            }
+        }
+        
         return words + ' Ghana Cedis';
+    }
+    
+    // Additional function to format numbers with commas (if needed elsewhere)
+    function formatNumberWithCommas(number) {
+        return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
     
     // Reset calculator
